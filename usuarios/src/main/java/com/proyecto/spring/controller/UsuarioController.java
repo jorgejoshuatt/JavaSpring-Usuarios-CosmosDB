@@ -36,15 +36,12 @@ public class UsuarioController {
 
     //Actualizar un usuario existente
     @PutMapping("/{id}")
-    public ResponseEntity<UsuarioCrudResponse> updateExistingUsuario(@PathVariable String id, @RequestBody Usuario u) {
+    public ResponseEntity<String> updateExistingUsuario(@PathVariable String id, @RequestBody Usuario u) {
         Optional<Usuario> usuario = usuarioDBRepository.findById(id);
         usuarioDBRepository.deleteById(id, new PartitionKey(usuario.get().getNombre_usuario()));
         u.setId(id);
         u = usuarioDBRepository.save(u);
-        UsuarioCrudResponse usuarioCrudResponse = new UsuarioCrudResponse();
-        usuarioCrudResponse.setMessage("Usuario actualizado correctamente con el ID: " + u.getId());
-        usuarioCrudResponse.setStatusCode("204: No content");
-        return new ResponseEntity<UsuarioCrudResponse>(usuarioCrudResponse, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<String>("", HttpStatus.NO_CONTENT);
     }
 
     //Traer un usuario
@@ -71,22 +68,14 @@ public class UsuarioController {
         List<Usuario> usuarioList = new ArrayList<>();
         logger.info("Id is not present in the GET request");
         usuarioList = usuarioDBRepository.getAllUsuarios();
-        //return "index.html";
         return new ResponseEntity<List<Usuario>>(usuarioList, responseHeaders, HttpStatus.OK);
     }
 
-    //delete the customer of a particular id
+    //eliminar un id particular
     @DeleteMapping("/{id}")
-    public ResponseEntity<UsuarioCrudResponse> deleteExistingUsuario(@PathVariable String id, @RequestBody Usuario u) {
+    public ResponseEntity<String> deleteExistingUsuario(@PathVariable String id) {
         Optional<Usuario> usuario = usuarioDBRepository.findById(id);
         usuarioDBRepository.deleteById(id, new PartitionKey(usuario.get().getNombre_usuario()));
-        UsuarioCrudResponse usuarioCrudResponse = new UsuarioCrudResponse();
-        usuarioCrudResponse.setMessage("Usuario eliminado correctamente con el ID: " + u.getId());
-        usuarioCrudResponse.setStatusCode("204: No content");
-        return new ResponseEntity<UsuarioCrudResponse>(usuarioCrudResponse, HttpStatus.NO_CONTENT);
-    }
-    @GetMapping("/")
-    public String verPaginadeInicio(){
-        return "index.html";
+        return new ResponseEntity<String>("",HttpStatus.NO_CONTENT);
     }
 }
