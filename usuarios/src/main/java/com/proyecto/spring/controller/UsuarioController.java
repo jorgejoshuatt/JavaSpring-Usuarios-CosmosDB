@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@Controller
+@RestController
 @RequestMapping("/api/v1/usuarios")
 public class UsuarioController {
 
