@@ -55,6 +55,11 @@ public class UsuarioController {
     //Actualizar un usuario existente
     @PutMapping("/{id}")
     public ResponseEntity<String> updateExistingUsuario(@PathVariable String id, @RequestBody Usuario u) {
+        if (u.getNombre_usuario().equals("") || u.getNombre_usuario()==null ||
+                u.getContrasenia().equals("") || u.getContrasenia()==null ||
+                u.getCorreo().equals("") || u.getCorreo() == null){
+            throw new RuntimeException("Llene todos los campos, no sea Brusiano");
+        }
         Optional<Usuario> usuario = usuarioDBRepository.findById(id);
         usuarioDBRepository.deleteById(id, new PartitionKey(usuario.get().getNombre_usuario()));
         u.setId(id);

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
+
 @Getter
 @Setter
 @Container(containerName = "Usuario", ru="400")
@@ -15,6 +16,7 @@ public class Usuario {
     @Id
     @GeneratedValue
     private String id;
+    //public @interface NonNull {}
 
     @PartitionKey
     private String nombre_usuario;
@@ -23,7 +25,7 @@ public class Usuario {
 
     private String contrasenia;
 
-    public Usuario(String nombre_usuario, String correo, String contrasenia){
+    public Usuario(String nombre_usuario, String correo,String contrasenia){
         this.nombre_usuario = nombre_usuario;
         this.correo = correo;
         this.contrasenia = contrasenia;
