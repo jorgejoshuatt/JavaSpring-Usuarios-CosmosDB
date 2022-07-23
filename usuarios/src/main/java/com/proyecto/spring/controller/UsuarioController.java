@@ -1,6 +1,8 @@
 package com.proyecto.spring.controller;
 
 import com.azure.cosmos.models.PartitionKey;
+import com.azure.spring.data.cosmos.repository.Query;
+import com.proyecto.spring.exception.RequestException;
 import com.proyecto.spring.repository.UsuarioDBRepository;
 import com.proyecto.spring.dto.UsuarioCrudResponse;
 import com.proyecto.spring.model.Usuario;
@@ -10,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -27,6 +29,22 @@ public class UsuarioController {
     //Agregar nuevo usuario
     @PostMapping
     public ResponseEntity<UsuarioCrudResponse> createNewUsuario(@RequestBody Usuario u) {
+        /*if (u.getNombre_usuario().equals("") || u.getNombre_usuario()==null ||
+                u.getContrasenia().equals("") || u.getContrasenia()==null ||
+                u.getCorreo().equals("") || u.getCorreo() == null){
+        throw new RuntimeException("Llene todos los campos, no sea Brusiano");
+        }*/
+        /*if (u.getNombre_usuario().equals("") || u.getNombre_usuario()==null){
+            throw new RequestException("P-400","El email es requerido");
+        }
+        if (u.getContrasenia().equals("") || u.getContrasenia()==null||
+                u.setContrasenia();){
+            throw new RequestException("P-401","El email es requerido");
+        }*/
+        //"^(.+)@(.+)$"
+        if (u.getCorreo().equals("") || u.getCorreo() == null) {
+            throw new RequestException("P-402", "Ingrese un email valido aaaaaaa@qqqqqq.com");
+        }
         u = usuarioDBRepository.save(u);
         UsuarioCrudResponse usuarioCrudResponse = new UsuarioCrudResponse();
         usuarioCrudResponse.setMessage("Nuevo usuario creado correctamente con el ID: " + u.getId());

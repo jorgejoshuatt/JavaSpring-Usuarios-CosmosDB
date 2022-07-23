@@ -18,7 +18,9 @@ public class Usuario {
 
     @PartitionKey
     private String nombre_usuario;
+
     private String correo;
+
     private String contrasenia;
 
     public Usuario(String nombre_usuario, String correo, String contrasenia){
