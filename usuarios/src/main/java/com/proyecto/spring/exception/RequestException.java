@@ -6,7 +6,7 @@ import lombok.Data;
 //Clase encargada de validar todos los Request
 public class RequestException extends RuntimeException {
 
-    //agregamos valores que querramos propagar
+    //agregamos valores que queramos propagar
     private String code;
     //Creamos un constructor
     public RequestException(String code, String message){

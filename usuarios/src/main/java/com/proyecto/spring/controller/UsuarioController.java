@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import java.util.*;
 
@@ -29,22 +31,29 @@ public class UsuarioController {
     //Agregar nuevo usuario
     @PostMapping
     public ResponseEntity<UsuarioCrudResponse> createNewUsuario(@RequestBody Usuario u) {
-        /*if (u.getNombre_usuario().equals("") || u.getNombre_usuario()==null ||
-                u.getContrasenia().equals("") || u.getContrasenia()==null ||
-                u.getCorreo().equals("") || u.getCorreo() == null){
-        throw new RuntimeException("Llene todos los campos, no sea Brusiano");
-        }*/
-        /*if (u.getNombre_usuario().equals("") || u.getNombre_usuario()==null){
-            throw new RequestException("P-400","El email es requerido");
+
+        if (u.getNombre_usuario().equals("") || u.getNombre_usuario()==null){
+            throw new RequestException("P-400","El nombre es requerido");
         }
-        if (u.getContrasenia().equals("") || u.getContrasenia()==null||
-                u.setContrasenia();){
-            throw new RequestException("P-401","El email es requerido");
-        }*/
-        //"^(.+)@(.+)$"
+
         if (u.getCorreo().equals("") || u.getCorreo() == null) {
-            throw new RequestException("P-402", "Ingrese un email valido aaaaaaa@qqqqqq.com");
+            throw new RequestException("P-401", "El correo electronico es requerido");
         }
+        //Patron para validar el correo
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher mather = pattern.matcher(u.getCorreo());
+        if (mather.find() == false) {
+            throw new RequestException("P-402", "Ingrese un email correcto");
+        }
+
+        if (u.getContrasenia().equals("") || u.getContrasenia()==null){
+            throw new RequestException("P-403","Una contraseña es requerida");
+        }
+        if (u.getContrasenia().length() < 15){
+            throw new RequestException("P-403","Ingrese una contraseña mayor a 15 caracteres");
+        }
+
+
         u = usuarioDBRepository.save(u);
         UsuarioCrudResponse usuarioCrudResponse = new UsuarioCrudResponse();
         usuarioCrudResponse.setMessage("Nuevo usuario creado correctamente con el ID: " + u.getId());
