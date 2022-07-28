@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/img/just-logo.svg">
+  <title>El Poyo</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <img src="/img/just-logo.svg" alt="Logo El Poyo">
+  </header>
+
+  <section class="content">
+    <p>Crea una cuenta y activa tu plan gratuito de 3 meses.</p>
+    <img src="/img/Paypal_Monochromatic.png" alt="Prices">
+  </section>
+
+  <form class="form" autocomplete="off" id="formulario_registrar_usuarios">
+    <p>Registrate</p>
+    <label for="nombre-usuario">Nombre de Usuario</label>
+    <input name="nombre-usuario" id="nombre-usuario" type="text">
+    <label for="correo">Correo electrónico</label>
+    <input name="correo" id="correo" type="email">
+    <label for="password">Contraseña</label>
+    <input type="password" name="password" id="password">
+    <label for="contrasenia">Confirmar contraseña</label>
+    <input type="password" name="contrasenia" id="contrasenia">
+    <div class="buttons">
+      <button type="reset">Borrar</button>
+      <button id="save">Guardar</button>
+      <button id="agrario">Prueba GET</button>
+    </div>
+  </form>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/prueba_axios.js"></script>
+
+</body>
+</html>
