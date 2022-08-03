@@ -19,6 +19,5 @@ public class ControllerAdvice {
         //Generamos un diccionario de errores personalizado
         ErrorDTO error =ErrorDTO.builder().code("P-500").message(ex.getMessage()).build();
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-
     }
 }

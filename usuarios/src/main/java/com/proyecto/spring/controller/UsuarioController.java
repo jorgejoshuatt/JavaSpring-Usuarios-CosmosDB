@@ -54,6 +54,7 @@ public class UsuarioController {
         if (searchCorreo(u.getCorreo())==false){
             throw new RequestException("409","El correo ya existe");
         }
+        u = usuarioDBRepository.save(u);
         UsuarioCrudResponse usuarioCrudResponse = new UsuarioCrudResponse();
         usuarioCrudResponse.setMessage("Nuevo usuario creado correctamente con el ID: " + u.getId());
         usuarioCrudResponse.setStatusCode("201: Created");
@@ -108,7 +109,7 @@ public class UsuarioController {
         usuarioDBRepository.deleteById(id, new PartitionKey(usuario.get().getNombre_usuario()));
         return new ResponseEntity<String>("",HttpStatus.NO_CONTENT);
     }
-
+    //
     public boolean searchCorreo(String correo) {
         List<Usuario> correoList = new ArrayList<>();
         logger.info("Id is not present in the GET request");
@@ -119,6 +120,7 @@ public class UsuarioController {
             return false;
         }
     }
+    //
 @GetMapping("/correos")
     public ResponseEntity<List<Usuario>> searchCorreo2() {
     HttpHeaders responseHeaders = new HttpHeaders();

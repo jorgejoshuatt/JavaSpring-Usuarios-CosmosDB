@@ -16,9 +16,12 @@ public interface UsuarioDBRepository extends CosmosRepository<Usuario, String> {
 
     @Query(value = "SELECT u.correo FROM Usuarios u")
     List<Usuario> getAllCorreos();
-
+    //JPQL
+    //Con @ se especifica el parametro
+    //Query para buscar un correo
     @Query(value = "SELECT u.correo FROM Usuarios u WHERE u.correo=@correoform")
     List<Usuario> searchCorreo(String correoform);
 
-    List<Usuario> findUsuarioByCorreoLike(@Param("correoform") String correoform);
+
+    //List<Usuario> findUsuarioByCorreoLike(@Param("correoform") String correoform);
 }
