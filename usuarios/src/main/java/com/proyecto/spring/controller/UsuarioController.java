@@ -50,8 +50,7 @@ public class UsuarioController {
         if (u.getContrasenia().length() < 8){
             throw new RequestException("P-403","Ingrese una contraseña mayor a 8 caracteres");
         }
-        u = usuarioDBRepository.save(u);
-        if (searchCorreo(u.getCorreo())==false){
+        if (searchCorreo(u.getCorreo())==true){
             throw new RequestException("409","El correo ya existe");
         }
         u = usuarioDBRepository.save(u);
@@ -113,8 +112,8 @@ public class UsuarioController {
     public boolean searchCorreo(String correo) {
         List<Usuario> correoList = new ArrayList<>();
         logger.info("Id is not present in the GET request");
-        correoList = usuarioDBRepository.searchCorreo(correo);
-        if (correoList.contains(correo)){
+        correoList = usuarioDBRepository.searchCorreo(correo);  // -> [{ "nombre_usuario": null, "correo": juan@poyo.com, "contrasenia":null}]   -> []
+        if (correoList != null && correoList.size() > 0){
             return true;
         }else{
             return false;
