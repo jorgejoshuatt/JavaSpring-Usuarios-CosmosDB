@@ -35,23 +35,27 @@ public class UsuarioController {
         }
 
         if (u.getCorreo().equals("") || u.getCorreo() == null) {
-            throw new RequestException("P-401", "El correo electronico es requerido");
+            throw new RequestException("P-101", "El correo electronico es requerido");
         }
         //Patron para validar el correo
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
         Matcher mather = pattern.matcher(u.getCorreo());
         if (mather.find() == false) {
-            throw new RequestException("P-402", "Ingrese un email correcto");
+            throw new RequestException("P-102", "Ingrese un email correcto");
         }
-
-        if (u.getContrasenia().equals("") || u.getContrasenia()==null){
-            throw new RequestException("P-403","Una contraseña es requerida");
+        Pattern pattern2 = Pattern.compile("^(?=.*[0-9]) (?=.*[az]) (?=.*[AZ]) (?=.*[@#$%^&-+=()])(?=\\\\S+$).{8,20} $");
+        Matcher mather2 = pattern2.matcher(u.getContrasenia());
+        if (mather2.find() == false) {
+            throw new RequestException("P-102", "Ingrese una contraseña correcta");
         }
-        if (u.getContrasenia().length() < 8){
-            throw new RequestException("P-403","Ingrese una contraseña mayor a 8 caracteres");
+        if (u.getContrasenia().equals("") || u.getContrasenia() == null) {
+            throw new RequestException("P-103", "Una contraseña es requerida");
         }
-        if (searchCorreo(u.getCorreo())==true){
-            throw new RequestException("409","El correo ya existe");
+        if (searchCorreo(u.getCorreo()) == true) {
+            throw new RequestException("105", "El correo ingresado ya existe");
+        }
+        if (searchNombreUsuario(u.getNombre_usuario()) == true) {
+            throw new RequestException("106", "El nombre de usuario ya existe");
         }
         u = usuarioDBRepository.save(u);
         UsuarioCrudResponse usuarioCrudResponse = new UsuarioCrudResponse();
@@ -119,14 +123,16 @@ public class UsuarioController {
             return false;
         }
     }
-    //
-@GetMapping("/correos")
-    public ResponseEntity<List<Usuario>> searchCorreo2() {
-    HttpHeaders responseHeaders = new HttpHeaders();
-    responseHeaders.add("ContentType", "application/json");
-    List<Usuario> correoList = new ArrayList<>();
-    logger.info("Id is not present in the GET request");
-    correoList = usuarioDBRepository.searchCorreo("juan@poyo.com");
-    return new ResponseEntity<List<Usuario>>(correoList, responseHeaders, HttpStatus.OK);
-}
+
+    public boolean searchNombreUsuario(String nombre_usuario) {
+        List<Usuario> nombre_usuarioList = new ArrayList<>();
+        logger.info("Id is not present in the GET request");
+        nombre_usuarioList = usuarioDBRepository.searchNombreUsuario(nombre_usuario);  // -> [{ "nombre_usuario": null, "correo": juan@poyo.com, "contrasenia":null}]   -> []
+        if (nombre_usuarioList != null && nombre_usuarioList.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
