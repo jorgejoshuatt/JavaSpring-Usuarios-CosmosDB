@@ -12,9 +12,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import java.util.*;
 
 @RestController
@@ -30,8 +30,8 @@ public class UsuarioController {
     @PostMapping
     public ResponseEntity<UsuarioCrudResponse> createNewUsuario(@RequestBody Usuario u) {
 
-        if (u.getNombre_usuario().equals("") || u.getNombre_usuario()==null){
-            throw new RequestException("P-400","El nombre es requerido");
+        if (u.getNombre_usuario().equals("") || u.getNombre_usuario() == null) {
+            throw new RequestException("P-400", "El nombre es requerido");
         }
 
         if (u.getCorreo().equals("") || u.getCorreo() == null) {
@@ -67,10 +67,10 @@ public class UsuarioController {
     //Actualizar un usuario existente
     @PutMapping("/{id}")
     public ResponseEntity<String> updateExistingUsuario(@PathVariable String id, @RequestBody Usuario u) {
-        if (u.getNombre_usuario().equals("") || u.getNombre_usuario()==null ||
-                u.getContrasenia().equals("") || u.getContrasenia()==null ||
-                u.getCorreo().equals("") || u.getCorreo() == null){
-            throw new RuntimeException("Llene todos los campos, no sea Brusiano");
+        if (u.getNombre_usuario().equals("") || u.getNombre_usuario() == null ||
+                u.getContrasenia().equals("") || u.getContrasenia() == null ||
+                u.getCorreo().equals("") || u.getCorreo() == null) {
+            throw new RuntimeException("Llene todos los campos");
         }
         Optional<Usuario> usuario = usuarioDBRepository.findById(id);
         usuarioDBRepository.deleteById(id, new PartitionKey(usuario.get().getNombre_usuario()));
@@ -110,16 +110,17 @@ public class UsuarioController {
     public ResponseEntity<String> deleteExistingUsuario(@PathVariable String id) {
         Optional<Usuario> usuario = usuarioDBRepository.findById(id);
         usuarioDBRepository.deleteById(id, new PartitionKey(usuario.get().getNombre_usuario()));
-        return new ResponseEntity<String>("",HttpStatus.NO_CONTENT);
+        return new ResponseEntity<String>("", HttpStatus.NO_CONTENT);
     }
+
     //
     public boolean searchCorreo(String correo) {
         List<Usuario> correoList = new ArrayList<>();
         logger.info("Id is not present in the GET request");
         correoList = usuarioDBRepository.searchCorreo(correo);  // -> [{ "nombre_usuario": null, "correo": juan@poyo.com, "contrasenia":null}]   -> []
-        if (correoList != null && correoList.size() > 0){
+        if (correoList != null && correoList.size() > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

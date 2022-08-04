@@ -8,10 +8,11 @@ public class RequestException extends RuntimeException {
 
     //agregamos valores que queramos propagar
     private String code;
+
     //Creamos un constructor
-    public RequestException(String code, String message){
+    public RequestException(String code, String message) {
         super(message);
-        this.code=code;
+        this.code = code;
 
     }
 }

@@ -13,11 +13,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ControllerAdvice {
     //Definicion del tipo de excepciones que queremos controlar con @ExceptionHandler
     //Despues definimos el tipo de error "RuntimeException"
-    @ExceptionHandler(value=RuntimeException.class)
+    @ExceptionHandler(value = RuntimeException.class)
     //Definimos metodo
-    public ResponseEntity<ErrorDTO> runtimeExceptionHandler(RuntimeException ex){
+    public ResponseEntity<ErrorDTO> runtimeExceptionHandler(RuntimeException ex) {
         //Generamos un diccionario de errores personalizado
-        ErrorDTO error =ErrorDTO.builder().code("P-500").message(ex.getMessage()).build();
+        ErrorDTO error = ErrorDTO.builder().code("P-500").message(ex.getMessage()).build();
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 }
