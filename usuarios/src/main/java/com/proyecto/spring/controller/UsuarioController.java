@@ -33,7 +33,6 @@ public class UsuarioController {
         if (u.getNombre_usuario().equals("") || u.getNombre_usuario() == null) {
             throw new RequestException("P-400", "El nombre es requerido");
         }
-
         if (u.getCorreo().equals("") || u.getCorreo() == null) {
             throw new RequestException("P-101", "El correo electronico es requerido");
         }
@@ -43,7 +42,7 @@ public class UsuarioController {
         if (mather.find() == false) {
             throw new RequestException("P-102", "Ingrese un email correcto");
         }
-        Pattern pattern2 = Pattern.compile("^(?=.*[0-9]) (?=.*[az]) (?=.*[AZ]) (?=.*[@#$%^&-+=()])(?=\\\\S+$).{8,20} $");
+        Pattern pattern2 = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$");
         Matcher mather2 = pattern2.matcher(u.getContrasenia());
         if (mather2.find() == false) {
             throw new RequestException("P-102", "Ingrese una contraseña correcta");
