@@ -1,7 +1,7 @@
 let newUser = new Object();
-let username = document.getElementById('nombre-usuario');
-let email = document.getElementById('correo');
-let password = document.getElementById('contrasenia');
+let username = document.getElementById('username');
+let email = document.getElementById('email');
+let password = document.getElementById('password');
 let save = document.getElementById('save');
 
 save.addEventListener('click', (e) => {
@@ -10,9 +10,9 @@ save.addEventListener('click', (e) => {
     newUser.email = email.value;
     newUser.password = password.value;
     axios.post('/api/v1/usuarios',{
-        "nombre_usuario": username.value,
-        "correo": email.value,
-        "contrasenia": password.value
+        "username": username.value,
+        "email": email.value,
+        "password": password.value
     })
         .then(function (response) {
             console.log(response);
