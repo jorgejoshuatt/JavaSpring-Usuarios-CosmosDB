@@ -1,81 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Poyo</title>
-  <link rel="stylesheet" href="users-list.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Poyo</title>
+    <link rel="stylesheet" href="/css/users-list.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/img/just-logo.svg">
 </head>
-
 <body>
-
-  <header class="title">
-    <img id="just-logo" src="img/just-logo.svg" alt="Logo El Poyo">
-    <img id="poyo-logo" src="img/poyo-logo.svg" alt="Big logo El Poyo">
+<header class="title">
+    <img id="just-logo" src="/img/just-logo.svg" alt="Logo El Poyo">
+    <img id="poyo-logo" src="/img/poyo-logo.svg" alt="Big logo El Poyo">
     <div class="links">
-      <a href="index.html">Registrarse</a>
-      <a href="">Sobre nosotros</a>
+        <a href="index">Registrarse</a>
+        <a href="">Sobre nosotros</a>
     </div>
-  </header>
-
-  <div class="big-block">
-
+</header>
+<div class="big-block">
     <section class="content">
-      <img src="img/Paypal_Monochromatic.png" alt="Prices">
-      <p>Localiza y modifica los datos que ingresaste
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam veritatis distinctio error consequuntur natus modi
-        harum atque et ad quod.
-      </p>
+        <img src="/img/Paypal_Monochromatic.png" alt="Prices">
+        <p>Localiza y modifica los datos que ingresaste
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam veritatis distinctio error consequuntur natus
+            modi
+            harum atque et ad quod.
+        </p>
     </section>
-
-
-
-
-
     <div class="table-container">
-      <p class="heading">Usuarios registrados</p>
-
-
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Usuario</th>
-            <th>Correo electrónico</th>
-            <th>#</th>
-          </tr>
-        </thead>
-        <tbody id="insert-user">
-          <tr>
-            <td data-label="Usuario">brus2099</td>
-            <td data-label="Email">brunocruzgranados@outlook.com
-            </td>
-            <td data-label="#">
-              <button class="button">✏️</button>
-              <button class="button">🗑️</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-
-
+        <p class="heading">Usuarios registrados</p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Correo electrónico</th>
+                <th>#</th>
+            </tr>
+            </thead>
+            <tbody id="insert-user">
+            <tr>
+                <td data-label="Usuario">brus2099</td>
+                <td data-label="Email">brunocruzgranados@outlook.com
+                </td>
+                <td data-label="#">
+                    <button class="button">✏️</button>
+                    <button class="button">🗑️</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-
-
-
-
-
-
-  </div>
-
-  <script src="users.js"></script>
-
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/users.js"></script>
 </body>
-
 </html>

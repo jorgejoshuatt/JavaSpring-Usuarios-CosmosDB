@@ -1,53 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Poyo</title>
-  <link rel="stylesheet" href="index.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Poyo</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/img/just-logo.svg">
 </head>
-
 <body>
-
-  <header class="title">
+<header class="title">
     <img id="just-logo" src="/img/just-logo.svg" alt="Logo El Poyo">
     <img id="poyo-logo" src="/img/poyo-logo.svg" alt="Big logo El Poyo">
     <div class="links">
-      <a href="users-list.html">Usuarios</a>
-      <a href="">Sobre nosotros</a>
+        <a href="users">Usuarios</a>
+        <a href="">Sobre nosotros</a>
     </div>
-  </header>
-
-  <div class="big-block">
+</header>
+<div class="big-block">
     <section class="content">
-      <p>Crea una cuenta y activa tu plan gratuito de 3 meses.</p>
-      <img src="img/Paypal_Monochromatic.png" alt="Prices">
+        <p>Crea una cuenta y activa tu plan gratuito de 3 meses.</p>
+        <img src="img/Paypal_Monochromatic.png" alt="Prices">
     </section>
-
     <form class="form" autocomplete="off">
-      <p>Registrate</p>
-      <label for="username">Nombre de Usuario</label>
-      <input name="username" id="username" type="text">
-      <label for="email">Correo electrónico</label>
-      <input name="email" id="email" type="email">
-      <label for="password">Contraseña</label>
-      <input type="password" name="password" id="password">
-      <label for="password-conf">Confirmar contraseña</label>
-      <input type="password" name="password-conf" id="password-conf"">
-      <div class=" buttons">
-        <button type="reset">Borrar</button>
-        <button id="save">Guardar</button>
-      </div>
+        <p>Registrate</p>
+        <label for="username">Nombre de Usuario</label>
+        <input name="username" id="username" type="text">
+        <label for="email">Correo electrónico</label>
+        <input name="email" id="email" type="email">
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password">
+        <label for="password-conf">Confirmar contraseña</label>
+        <input type="password" name="password-conf" id="password-conf">
+        <div class="buttons">
+            <button type="reset">Borrar</button>
+            <button id="save">Guardar</button>
+            <button id="agrario">GET</button>
+        </div>
     </form>
-  </div>
-
-  <script src="users.js"></script>
-
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/index.js"></script>
 </body>
-
 </html>

@@ -20,10 +20,8 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/v1/usuarios")
 public class UsuarioController {
-
     @Autowired
     UsuarioDBRepository usuarioDBRepository;
-
     Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
     //Agregar nuevo usuario
@@ -134,5 +132,4 @@ public class UsuarioController {
             return false;
         }
     }
-
 }
