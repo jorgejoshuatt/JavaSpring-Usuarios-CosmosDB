@@ -37,7 +37,7 @@ const insertUsers = document.getElementById('insert-user');
 let strList = '';
 
 Object.values(usersList).forEach(user => {
-  strList += `<tr><td data-label="Usuario">${user.nombre_usuario}</td><td data-label="Email">${user.correo}</td><td data-label="#">  <button class="button">✏️</button>  <button class="button">🗑️</button></td></tr>`;
+  strList += `<tr><td data-label="Usuario">${user.nombre_usuario}</td><td data-label="Email">${user.correo}</td><td class="row-btns">  <button class="button">✏️</button>  <button class="button">🗑️</button></td></tr>`;
 });
 
 insertUsers.innerHTML = strList;

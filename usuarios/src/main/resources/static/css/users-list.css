@@ -56,12 +56,10 @@ header {
 
 .content {
   padding: 20px;
-  border: 1px solid red;
   margin: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  display: none;
 }
 
 .content p {
@@ -78,9 +76,15 @@ header {
 /* Table styles */
 
 .table-container {
-  border: 1px solid red;
   max-width: 700px;
   margin: 20px 0;
+}
+
+.table-container .heading {
+  font-weight: 600;
+  font-size: 24px;
+  color: #003165;
+  margin: 10px 0 25px 0;
 }
 
 .table {
@@ -92,20 +96,60 @@ table thead {
   display: none;
 }
 
-.table tbody tr td {
-  padding: 8px;
-  border: 1px solid #aaa;
+.table tbody tr {
+  margin: 15px 0;
+  border-radius: 13px;
+  transition: 0.1s background-color;
+}
+
+.table tbody tr:hover {
+  background-color: #FFF2D8;
+}
+
+.table, .table tbody, .table tr, .table td {
   display: block;
-  width: 100%;
+}
+
+.table td {
+  padding: 8px;
+  border-bottom: 1px solid #003165;
+  margin: 0 8px;
   text-align: right;
+  position: relative;
+}
+
+.table td:last-child {
+  border: none;
+}
+
+.table td::before {
+  content: attr(data-label);
+  position: absolute;
+  left: 0;
+  padding-left: 15px;
+}
+
+.table .row-btns {
+  text-align: center;
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+  transition: 0.1s height, 0.1s padding;
+}
+
+.table tr:hover .row-btns {
+  height: 50px;
 }
 
 button {
   color: #003165;
   background: none;
+  width: 36px;
+  height: 36px;
   border: 1px solid #003165;
   border-radius: 8px;
   padding: 5px 10px;
+  margin-top: 10px;
   cursor: pointer;
   transition: 0.1s background-color, 0.1s color;
 }
