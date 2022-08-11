@@ -3,7 +3,7 @@
 /*
 Run for SpringBoot
 async function axiosGet () {
-    data = await axios.get('/api/v1/usuarios')
+    data = await axios.get('/api/usuarios')
         .then(function (response) {
             console.log(response)
             return response;

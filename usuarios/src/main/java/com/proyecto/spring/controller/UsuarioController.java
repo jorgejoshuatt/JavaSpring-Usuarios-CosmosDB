@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
+@RequestMapping("/api/usuarios")
 public class UsuarioController {
     @Autowired
     UsuarioDBRepository usuarioDBRepository;
@@ -27,33 +27,7 @@ public class UsuarioController {
     //Agregar nuevo usuario
     @PostMapping
     public ResponseEntity<UsuarioCrudResponse> createNewUsuario(@RequestBody Usuario u) {
-
-        if (u.getNombre_usuario().equals("") || u.getNombre_usuario() == null) {
-            throw new RequestException("P-400", "El nombre es requerido");
-        }
-        if (u.getCorreo().equals("") || u.getCorreo() == null) {
-            throw new RequestException("P-101", "El correo electronico es requerido");
-        }
-        //Patron para validar el correo
-        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-        Matcher mather = pattern.matcher(u.getCorreo());
-        if (mather.find() == false) {
-            throw new RequestException("P-102", "Ingrese un email correcto");
-        }
-        Pattern pattern2 = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$");
-        Matcher mather2 = pattern2.matcher(u.getContrasenia());
-        if (mather2.find() == false) {
-            throw new RequestException("P-102", "Ingrese una contraseña correcta");
-        }
-        if (u.getContrasenia().equals("") || u.getContrasenia() == null) {
-            throw new RequestException("P-103", "Una contraseña es requerida");
-        }
-        if (searchCorreo(u.getCorreo()) == true) {
-            throw new RequestException("105", "El correo ingresado ya existe");
-        }
-        if (searchNombreUsuario(u.getNombre_usuario()) == true) {
-            throw new RequestException("106", "El nombre de usuario ya existe");
-        }
+        validaciones(u);
         u = usuarioDBRepository.save(u);
         UsuarioCrudResponse usuarioCrudResponse = new UsuarioCrudResponse();
         usuarioCrudResponse.setMessage("Nuevo usuario creado correctamente con el ID: " + u.getId());
@@ -64,11 +38,7 @@ public class UsuarioController {
     //Actualizar un usuario existente
     @PutMapping("/{id}")
     public ResponseEntity<String> updateExistingUsuario(@PathVariable String id, @RequestBody Usuario u) {
-        if (u.getNombre_usuario().equals("") || u.getNombre_usuario() == null ||
-                u.getContrasenia().equals("") || u.getContrasenia() == null ||
-                u.getCorreo().equals("") || u.getCorreo() == null) {
-            throw new RuntimeException("Llene todos los campos");
-        }
+        validaciones(u);
         Optional<Usuario> usuario = usuarioDBRepository.findById(id);
         usuarioDBRepository.deleteById(id, new PartitionKey(usuario.get().getNombre_usuario()));
         u.setId(id);
@@ -78,7 +48,7 @@ public class UsuarioController {
 
     //Traer un usuario
     @GetMapping("/{id}")
-    public ResponseEntity<List<Usuario>> getUsuarios(@PathVariable String id) {
+    public ResponseEntity<List<Usuario>> getUsuario(@PathVariable String id) {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("ContentType", "application/json");
         List<Usuario> usuarioList = new ArrayList<>();
@@ -102,7 +72,7 @@ public class UsuarioController {
         return new ResponseEntity<List<Usuario>>(usuarioList, responseHeaders, HttpStatus.OK);
     }
 
-    //eliminar un id particular
+    //Eliminar un id particular
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteExistingUsuario(@PathVariable String id) {
         Optional<Usuario> usuario = usuarioDBRepository.findById(id);
@@ -110,7 +80,7 @@ public class UsuarioController {
         return new ResponseEntity<String>("", HttpStatus.NO_CONTENT);
     }
 
-    //
+    //Buscar si el correo existe dentro de la BD
     public boolean searchCorreo(String correo) {
         List<Usuario> correoList = new ArrayList<>();
         logger.info("Id is not present in the GET request");
@@ -122,6 +92,7 @@ public class UsuarioController {
         }
     }
 
+    //Buscar si el nombre de usuario existe dentro de la BD
     public boolean searchNombreUsuario(String nombre_usuario) {
         List<Usuario> nombre_usuarioList = new ArrayList<>();
         logger.info("Id is not present in the GET request");
@@ -130,6 +101,40 @@ public class UsuarioController {
             return true;
         } else {
             return false;
+        }
+    }
+
+    //Validaciones para evitar datos vacios o erroneos
+    public void validaciones(@RequestBody Usuario u) {
+        //Validaciones para evitar campos vacios
+        if (u.getNombre_usuario().equals("") || u.getNombre_usuario() == null) {
+            throw new RequestException("P-400", "El nombre es requerido");
+        }
+        if (u.getCorreo().equals("") || u.getCorreo() == null) {
+            throw new RequestException("P-101", "El correo electronico es requerido");
+        }
+        if (u.getContrasenia().equals("") || u.getContrasenia() == null) {
+            throw new RequestException("P-103", "Una contraseña es requerida");
+        }
+        //Validaciones para una correcta sintaxis
+        //Sintaxis correo
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher mather = pattern.matcher(u.getCorreo());
+        if (mather.find() == false) {
+            throw new RequestException("P-102", "Ingrese un email correcto");
+        }
+        //Sintaxis contraseña
+        Pattern pattern2 = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$");
+        Matcher mather2 = pattern2.matcher(u.getContrasenia());
+        if (mather2.find() == false) {
+            throw new RequestException("P-102", "Ingrese una contraseña correcta");
+        }
+        //Validaciones para comprobar si el dato ingresado ya existe en la BD
+        if (searchCorreo(u.getCorreo()) == true) {
+            throw new RequestException("105", "El correo ingresado ya existe");
+        }
+        if (searchNombreUsuario(u.getNombre_usuario()) == true) {
+            throw new RequestException("106", "El nombre de usuario ya existe");
         }
     }
 }

@@ -9,10 +9,10 @@ save.addEventListener('click', (e) => {
     newUser.user = username.value;
     newUser.email = email.value;
     newUser.password = password.value;
-    axios.post('/api/v1/usuarios',{
-        "username": username.value,
-        "email": email.value,
-        "password": password.value
+    axios.post('/api/usuarios', {
+        "nombre_usuario": username.value,
+        "correo": email.value,
+        "contrasenia": password.value
     })
         .then(function (response) {
             console.log(response);
@@ -26,7 +26,7 @@ save.addEventListener('click', (e) => {
 let agrario = document.getElementById('agrario');
 agrario.addEventListener('click', (e) => {
     e.preventDefault();
-    axios.get('/api/v1/usuarios')
+    axios.get('/api/usuarios')
         .then(function (response) {
             console.log(response);
         })
