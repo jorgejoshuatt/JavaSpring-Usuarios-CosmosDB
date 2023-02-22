@@ -1,19 +1,5 @@
 "use strict"
 
-/*
-Run for SpringBoot
-async function axiosGet () {
-    data = await axios.get('/api/usuarios')
-        .then(function (response) {
-            console.log(response)
-            return response;
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-}
-*/
-
 /* Run for visual testing */
 const usersList = {
   user1: {
@@ -36,8 +22,23 @@ const usersList = {
 const insertUsers = document.getElementById('insert-user');
 let strList = '';
 
-Object.values(usersList).forEach(user => {
-  strList += `<tr><td data-label="Usuario">${user.nombre_usuario}</td><td data-label="Email">${user.correo}</td><td class="row-btns">  <button class="button">✏️</button>  <button class="button">🗑️</button></td></tr>`;
-});
+//usuarios = Object.assign({}, usuarios)
 
-insertUsers.innerHTML = strList;
+let usuarios;
+
+axios.get('/api/usuarios')
+    .then(function (response) {
+        usuarios = response.data;
+        console.log(usuarios);
+        usuarios.forEach(user => {
+            strList += `<tr><td data-label="Usuario">${user.nombre_usuario}</td><td data-label="Email">${user.correo}</td><td class="row-btns">  <button class="button">✏️</button>  <button class="button">🗑️</button></td></tr>`;
+        });
+        insertUsers.innerHTML = strList;
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+
+
+
