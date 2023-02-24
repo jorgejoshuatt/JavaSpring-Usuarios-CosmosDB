@@ -24,7 +24,7 @@ save.addEventListener('click', (e) => {
 });
 
 let agrario = document.getElementById('agrario');
-agrario.addEventListener('click', (e) => {
+agrario.addEventListener('click', (e ) => {
     e.preventDefault();
     axios.get('/api/usuarios')
         .then(function (response) {
