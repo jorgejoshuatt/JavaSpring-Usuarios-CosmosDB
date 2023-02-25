@@ -19,7 +19,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/usuarios")
-public class UsuarioController {
+public class  UsuarioController {
     @Autowired
     UsuarioDBRepository usuarioDBRepository;
     Logger logger = LoggerFactory.getLogger(UsuarioController.class);
@@ -118,7 +118,7 @@ public class UsuarioController {
         }
         //Validaciones para una correcta sintaxis
         //Sintaxis correo
-        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-ñÑ\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-ñÑ]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
         Matcher mather = pattern.matcher(u.getCorreo());
         if (mather.find() == false) {
             throw new RequestException("403", "Ingrese un email correcto");
