@@ -1,4 +1,5 @@
 "use strict"
+
 var strList = '';
 axios.get('/api/usuarios')
     .then(function (response) {
@@ -32,14 +33,19 @@ axios.get('/api/usuarios')
         updateBtns.forEach(function (btnUpdate) {
         btnUpdate.addEventListener('click', function (event) {
             const userId = this.dataset.userid;
-            window.location.href="/users/edit";
+            window.location.href=`/users/edit/${userId}`;
+
+
+
+            /*
                 axios.get(`/api/usuarios/${userId}`)
+
                     .then((response) => {
                         console.log(response);
                     })
                     .catch((error) => {
                         console.log(error);
-                    });
+                    });*/
             });
         });
     })

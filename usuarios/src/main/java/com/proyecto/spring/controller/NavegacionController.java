@@ -15,7 +15,7 @@ public class NavegacionController {
         return "users-list";
     }
 
-    @GetMapping("/users/edit")
+    @GetMapping("/users/edit/{id}")
     public String users_edit() {
         return "users-edit";}
 }
