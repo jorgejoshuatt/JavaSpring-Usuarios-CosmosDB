@@ -7,6 +7,7 @@
 
 body {
   background-color: #fffef6;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -220,4 +221,30 @@ button:active {
     width: 540px;
   }
 
+}
+
+*,*::before, *::after {
+   box-sizing: border-box;
+ }
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -36px 0 0 -36px;
+  height: 72px;
+  width: 72px;
+  border: 8px dotted #003165;
+  border-radius: 100%;
+  animation: loading 2s infinite linear;
 }

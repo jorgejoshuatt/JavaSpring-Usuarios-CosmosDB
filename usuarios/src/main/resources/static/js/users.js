@@ -9,6 +9,8 @@ axios.get('/api/usuarios')
         });
         const insertUsers = document.getElementById('insert-user');
         insertUsers.innerHTML = strList;
+        const animacion = document.getElementById('loading');
+        animacion.style.display="none";
         //Recopilacion de botones delete y update en un arreglo
         const deleteBtns = document.querySelectorAll('.delete-btn');
         //Recorrer el arreglo de botones
