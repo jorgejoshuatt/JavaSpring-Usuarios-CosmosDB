@@ -1,3 +1,12 @@
 # JavaSpring-Usuarios-CosmosDB
 
-Testing brus2099 conection
+Proyecto de...
+
+## Construido con 🛠️
+
+* Java
+* Spring boot
+
+## Autores ✒️
+
+* **Josh Trejo** - *Programación* - [Josh Trejo](https://github.com/jorgejoshuatt)
