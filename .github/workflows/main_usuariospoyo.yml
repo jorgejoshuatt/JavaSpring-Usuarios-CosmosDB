@@ -25,13 +25,16 @@ jobs:
         run: |
           cd usuarios
           mvn clean install
-          ls -l target/
-
+      
+      - name: Construir y empaquetar proyecto
+        run: mvn package
+        working-directory: usuarios
+      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: usuarios-0.0.1-SNAPSHOT
-          path: '${{ github.workspace }}/target/*.jar'
+          path: 'usuarios/target/usuarios-0.0.1-SNAPSHOT.jar'
 
   deploy:
     runs-on: ubuntu-latest
