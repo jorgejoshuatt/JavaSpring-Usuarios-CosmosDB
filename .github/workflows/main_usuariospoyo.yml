@@ -30,8 +30,8 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.war'
+          name: usuarios-0.0.1-SNAPSHOT
+          path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: java-app
+          name: usuarios-0.0.1-SNAPSHOT
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -53,4 +53,4 @@ jobs:
           app-name: 'UsuariosPoyo'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CF7E4C96416A44F5BEA90373C50CAE03 }}
-          package: '*.war'
+          package: '*.jar'
