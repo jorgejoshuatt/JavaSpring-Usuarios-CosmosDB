@@ -29,7 +29,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: usuarios-0.0.1-SNAPSHOT.jar
+          name: usuarios-0.0.1-SNAPSHOT
           path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
