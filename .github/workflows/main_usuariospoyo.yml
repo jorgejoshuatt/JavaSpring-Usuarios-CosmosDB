@@ -25,6 +25,7 @@ jobs:
         run: |
           cd usuarios
           mvn clean install
+          ls -l target/
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
