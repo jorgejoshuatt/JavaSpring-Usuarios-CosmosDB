@@ -31,4 +31,3 @@ axios.get(`/api/usuarios/${variableUserId}`)
     .catch((error) => {
         console.log(error);
     });
-/* 12345678$Ac*/

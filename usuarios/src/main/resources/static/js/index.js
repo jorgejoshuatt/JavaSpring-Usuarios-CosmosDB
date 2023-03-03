@@ -22,15 +22,3 @@ save.addEventListener('click', (e) => {
             console.log(error);
         });
 });
-
-let agrario = document.getElementById('agrario');
-agrario.addEventListener('click', (e ) => {
-    e.preventDefault();
-    axios.get('/api/usuarios')
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-})
