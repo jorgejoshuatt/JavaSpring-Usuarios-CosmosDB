@@ -38,7 +38,7 @@ public class  UsuarioController {
     //Actualizar un usuario existente
     @PutMapping("/{id}")
     public ResponseEntity<String> updateExistingUsuario(@PathVariable String id, @RequestBody Usuario u) {
-        validaciones(u);
+        validacionesUpdate(u);
         Optional<Usuario> usuario = usuarioDBRepository.findById(id);
         usuarioDBRepository.deleteById(id, new PartitionKey(usuario.get().getNombre_usuario()));
         u.setId(id);
@@ -104,8 +104,7 @@ public class  UsuarioController {
         }
     }
 
-    //Validaciones para evitar datos vacios o erroneos
-    public void validaciones(@RequestBody Usuario u) {
+    public void validacionesUpdate(@RequestBody Usuario u) {
         //Validaciones para evitar campos vacios
         if (u.getNombre_usuario().equals("") || u.getNombre_usuario() == null) {
             throw new RequestException("400", "El nombre es requerido");
@@ -129,6 +128,10 @@ public class  UsuarioController {
         if (mather2.find() == false) {
             throw new RequestException("404", "Ingrese una contraseña correcta");
         }
+    }
+
+    public void validaciones(@RequestBody Usuario u) {
+        validacionesUpdate(u);
         //Validaciones para comprobar si el dato ingresado ya existe en la BD
         if (searchCorreo(u.getCorreo()) == true) {
             throw new RequestException("405", "El correo ingresado ya existe");
