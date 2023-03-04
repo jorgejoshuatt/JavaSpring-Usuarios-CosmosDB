@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://elpoyocrudapp.azurewebsites.net"><img src="https://github.com/jorgejoshuatt/JavaSpring-Usuarios-CosmosDB/blob/main/usuarios/src/main/resources/static/img/Elpoyo.png" alt="El poyo logo"></a>
+  <a href="https://elpoyocrudapp.azurewebsites.net"><img src="https://github.com/jorgejoshuatt/JavaSpring-Usuarios-CosmosDB/blob/main/usuarios/src/main/resources/static/img/poyo-logo.svg" alt="El poyo logo"></a>
 </p>
 
 # JavaSpring-Usuarios-CosmosDB 
