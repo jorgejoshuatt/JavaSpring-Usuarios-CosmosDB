@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://elpoyocrudapp.azurewebsites.net"><img src="https://github.com/jorgejoshuatt/JavaSpring-Usuarios-CosmosDB/blob/main/usuarios/src/main/resources/static/img/poyo-logo.svg" alt="El poyo logo"></a>
+  <a href="https://elpoyocrudapp.azurewebsites.net"><img src="https://github.com/jorgejoshuatt/JavaSpring-Usuarios-CosmosDB/blob/main/usuarios/src/main/resources/static/img/Elpoyo.png" alt="El poyo logo"></a>
 </p>
 
 # JavaSpring-Usuarios-CosmosDB 
@@ -15,13 +15,14 @@ Proyecto CRUD de Usuario utilizando la tecnologia Java en conjunto con el framew
 
 ## Construido con 🛠️
 
-* Java
-* Spring boot
-* Azure CosmosDB 
-* JavaScript
-* Axios
-* HTML5/CSS
-* Azure web App
+* Java :hotsprings:	
+* Spring boot :leaves:	
+* Azure CosmosDB :floppy_disk:
+* Azure web App :cloud:	
+* Axios :electron:	
+* HTML5 :skull:
+* JavaScript :brain:	
+* CSS :cowboy_hat_face:	
 
 ## Autores ✒️
 
