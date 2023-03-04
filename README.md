@@ -1,6 +1,9 @@
+<p align="center">
+  <a href="https://elpoyocrudapp.azurewebsites.net/index"><img src="/img/poyo-logo.svg" alt="El poyo logo"></a>
+</p>
 # JavaSpring-Usuarios-CosmosDB
 
-Proyecto CRUD de Usuario utilizando la tecnologia Java y el framework Spring Boot, con la implementacion de una base de datos de Azure CosmosDB
+Proyecto CRUD de Usuario utilizando la tecnologia Java en conjunto con el framework Spring Boot, y con la implementacion de tecnologias en la nube con los servicios de Microsoft Azure, utilizando Cosmos DB como gestor de base de datos y Apps services para el despliegue de la pagina web en la nube.
 
 ## Construido con 🛠️
 
@@ -10,6 +13,7 @@ Proyecto CRUD de Usuario utilizando la tecnologia Java y el framework Spring Boo
 * JavaScript
 * Axios
 * HTML5/CSS
+* Azure web App
 
 ## Autores ✒️
 
