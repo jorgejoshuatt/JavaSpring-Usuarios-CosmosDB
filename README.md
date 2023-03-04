@@ -2,7 +2,11 @@
   <a href="https://elpoyocrudapp.azurewebsites.net/index"><img src="https://github.com/jorgejoshuatt/JavaSpring-Usuarios-CosmosDB/blob/main/usuarios/src/main/resources/static/img/poyo-logo.svg" alt="El poyo logo"></a>
 </p>
 
-# JavaSpring-Usuarios-CosmosDB
+# JavaSpring-Usuarios-CosmosDB 
+
+<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html"><img alt="JDK" src="https://img.shields.io/badge/JDK-1.8.0_162-orange.svg"/></a>
+<a href="https://docs.spring.io/spring-boot/docs/2.1.0.RELEASE/reference/html/"><img alt="Spring Boot" src="https://img.shields.io/badge/Spring Boot-2.1.0.RELEASE-brightgreen.svg"/></a>
+
 
 Proyecto CRUD de Usuario utilizando la tecnologia Java en conjunto con el framework Spring Boot, y con la implementacion de tecnologias en la nube con los servicios de Microsoft Azure, utilizando Cosmos DB como gestor de base de datos y Apps services para el despliegue de la pagina web en la nube.
 
@@ -20,3 +24,6 @@ Proyecto CRUD de Usuario utilizando la tecnologia Java en conjunto con el framew
 
 * **Josh Trejo** - *Programación* - [Josh Trejo](https://github.com/jorgejoshuatt)
 * **Brandon Avendaño** - *Programación* - [Brandon Avendaño Villegas](https://github.com/LanIkari)
+
+## Prueba nuestro proyecto ⚙️
+[El Poyo](https://elpoyocrudapp.azurewebsites.net/index)
