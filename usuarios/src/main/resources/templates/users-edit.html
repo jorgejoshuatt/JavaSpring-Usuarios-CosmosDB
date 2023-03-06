@@ -1,67 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Poyo</title>
-    <!--
-        uncomment for brus
-      <link rel="stylesheet" href="../static/css/style.css">
-      -->
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet">
 
-    <!--
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Poyo</title>
+  <!--
       uncomment for brus
-    <link rel="shortcut icon" href="../static/img/just-logo.svg" type="image/x-icon">
+      <link rel="stylesheet" href="/css/style.css">
+      -->
+  <link rel="stylesheet" href="../static/css/style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!--
+      uncomment for brus
+      <link rel="icon" type="image/x-icon" href="/img/just-logo.svg">
     -->
-    <link rel="icon" type="image/x-icon" href="/img/just-logo.svg">
+  <link rel="shortcut icon" href="../static/img/just-logo.svg" type="image/x-icon">
 </head>
 
 <body>
-<header class="title">
-    <img id="just-logo" src="/img/just-logo.svg" alt="Logo El Poyo">
-    <img id="poyo-logo" src="/img/poyo-logo.svg" alt="Big logo El Poyo">
-
-    <!--
-      images for brus
+  <header class="title">
     <img id="just-logo" src="../static/img/just-logo.svg" alt="Logo El Poyo">
     <img id="poyo-logo" src="../static/img/poyo-logo.svg" alt="Big logo El Poyo">
+
+    <!--
+    images for brus
+    <img id="just-logo" src="/img/just-logo.svg" alt="Logo El Poyo">
+    <img id="poyo-logo" src="/img/poyo-logo.svg" alt="Big logo El Poyo">
     -->
     <div class="links">
+      <a href="#">Sobre nosotros</a>
     </div>
-</header>
-<div class="big-block">
+  </header>
+  <div class="big-block">
     <section class="content">
-        <p>Actualiza los datos de tu cuenta.</p>
+      <p>Actualiza los datos de tu cuenta.</p>
+      <img src="../static/img/Paypal_Monochromatic.png" alt="Prices">
+      <!--
+        image for brus
         <img src="/img/Paypal_Monochromatic.png" alt="Prices">
-        <!--
-          image for brus
-        <img src="../static/img/Paypal_Monochromatic.png" alt="Prices">
         -->
     </section>
     <form class="form" autocomplete="off">
-        <p>Edita tu usuario</p>
-        <label for="username">Nombre de Usuario</label>
-        <input name="username" id="username" type="text">
-        <label for="email">Correo electrónico</label>
-        <input name="email" id="email" type="email">
-        <label for="password">Contraseña</label>
-        <input type="password" name="password" id="password">
-        <label for="password-conf">Confirmar contraseña</label>
-        <input type="password" name="password-conf" id="password-conf">
-        <div class="buttons">
-            <button id="save">Guardar</button>
-        </div>
+      <p>Edita tu usuario</p>
+      <label for="username">Nombre de Usuario</label>
+      <input name="username" id="username" type="text">
+      <label for="email">Correo electrónico</label>
+      <input name="email" id="email" type="email">
+      <label for="password">Nueva contraseña</label>
+      <input type="password" name="password" id="password">
+      <label for="password-conf">Confirmar contraseña</label>
+      <input type="password" name="password-conf" id="password-conf">
+      <div class="buttons">
+        <button id="save">Guardar</button>
+      </div>
     </form>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="/js/edit.js"></script>
-<!--
-uncomment for brus
-<script src="../static/js/index.js"></script>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../static/js/index.js"></script>
+  <!--
+    uncomment for brus
+    <script src="/js/edit.js"></script>
 -->
 </body>
+
 </html>
