@@ -26,11 +26,18 @@ let usersExample = [
         username:'yosh001',
         email:'josh001@poyo.com',
         password:'indiabuda',
-    }
-]
+    } 
+];
 
 usersExample.forEach(function (user) {
-    strList += `<tr><td data-label="Usuario">${user.username}</td><td data-label="Email">${user.email}</td><td class="row-btns"><button data-userid="${user.id}" class="button edit-btn">✏️</button><button data-userid="${user.id}" class="button delete-btn">🗑️</button></td></tr>`;
+    strList += `<tr>
+                  <td data-label="Usuario">${user.username}</td>
+                  <td data-label="Email">${user.email}</td>
+                  <td class="row-btns">
+                    <button data-userid="${user.id}" class="button edit-btn">✏️</button>
+                    <button data-userid="${user.id}" class="button delete-btn">🗑️</button>
+                  </td>
+                </tr>`;
 });
 const insertUsers = document.getElementById('insert-user');
 insertUsers.innerHTML = strList;
