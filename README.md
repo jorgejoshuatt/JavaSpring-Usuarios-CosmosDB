@@ -28,6 +28,8 @@ Proyecto CRUD de Usuario utilizando la tecnologia Java en conjunto con el framew
 
 * **Josh Trejo** - *Programación* - [Josh Trejo](https://github.com/jorgejoshuatt)
 * **Brandon Avendaño** - *Programación* - [Brandon Avendaño Villegas](https://github.com/LanIkari)
+* **Bruno Cruz** - *Programación* - [Bruno Cruz Granados](https://github.com/brus2099)
+
 
 ## Prueba nuestro proyecto ⚙️
 [El Poyo](https://elpoyocrudapp.azurewebsites.net/index)
