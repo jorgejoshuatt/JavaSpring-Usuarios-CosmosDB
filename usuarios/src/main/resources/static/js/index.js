@@ -17,6 +17,8 @@ save.addEventListener('click', (e) => {
         .then(function (response) {
             console.log(response);
             console.log(`User ${newUser.user} created successfully !!`)
+            /*Refrescamos la pagina*/
+            location.reload();
         })
         .catch(function (error) {
             console.log(error);

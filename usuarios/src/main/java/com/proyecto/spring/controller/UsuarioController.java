@@ -123,7 +123,7 @@ public class  UsuarioController {
             throw new RequestException("403", "Ingrese un email correcto");
         }
         //Sintaxis contraseña
-        Pattern pattern2 = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$");
+        Pattern pattern2 = Pattern.compile("^(?:(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))(?!.*(.)\\1{2,})[A-Za-z0-9!~<>,;:_=?*+#.”&§%°()\\|\\[\\]\\-\\$\\^\\@\\/]{8,32}$");
         Matcher mather2 = pattern2.matcher(u.getContrasenia());
         if (mather2.find() == false) {
             throw new RequestException("404", "Ingrese una contraseña correcta");
