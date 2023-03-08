@@ -9,6 +9,7 @@ save.addEventListener('click', (e) => {
     newUser.user = username.value;
     newUser.email = email.value;
     newUser.password = password.value;
+    save.disabled = true;
     axios.post('/api/usuarios', {
         "nombre_usuario": username.value,
         "correo": email.value,
@@ -17,10 +18,11 @@ save.addEventListener('click', (e) => {
         .then(function (response) {
             console.log(response);
             console.log(`User ${newUser.user} created successfully !!`)
-            /*Refrescamos la pagina*/
-            location.reload();
+            location.reload=true
         })
         .catch(function (error) {
             console.log(error);
-        });
+        }).finally(function (){
+            save.disabled=false;
+    });
 });
