@@ -1,5 +1,5 @@
 .container {
-  max-width: 500px;
+  max-width: 400px;
 }
 
 /* styling card from members */
@@ -40,13 +40,22 @@
 }
 
 .collaborator .about-me {
+  /*
+  --max-lines: 3;
+  display: -webkit-box;
   overflow: hidden;
-  height: 0px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines);
+  */
+  overflow: hidden;
+  height: 0;
   transition: 0.1s all;
 }
 
 .collaborator:hover .about-me {
-  height: 60px;
+  --max-lines: 5;
+  -webkit-line-clamp: var(--max-lines);
+  height: 125px;
 }
 
 .collaborator:hover {
