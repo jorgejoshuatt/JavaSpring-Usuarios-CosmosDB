@@ -1,0 +1,527 @@
+.cards {
+  max-width: 350px;
+  margin: 0 15px;
+}
+
+.collaborator-card {
+  margin: 0 0 10vh;
+  width: 340px;
+  height: 80vh;
+  display: block;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.collaborator-photo {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  transition: 0.1s scale;
+}
+
+.photo-yosh {
+  background-image: url(../img/collaborators/yosh.jpg);
+}
+
+.photo-brandon {
+  background-image: url(../img/collaborators/brandon2.jpg);
+}
+
+.photo-brus {
+  background-image: url(../img/collaborators/brus.jpg);
+}
+
+.collaborator-glass {
+  color: #fff;
+  background: #0004;
+  backdrop-filter: blur(6px);
+  width: 90%;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 5%;
+  position: absolute;
+  top: 60%;
+  transition: 0.1s top, 0.1s bottom, 0.1s height, 0.1s background;
+}
+
+.col-description {
+  color: transparent;
+  display: none;
+  transition: 0.1s color;
+}
+
+.col-name {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.col-roll {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.collaborator-card:hover .collaborator-photo {
+  scale: 1.15;
+}
+
+.collaborator-card:hover .collaborator-glass {
+  top: 0;
+  height: 94%;
+  background: #0008;
+}
+
+.collaborator-card:hover .col-description {
+  display: block;
+  color: white;
+  margin: 20px 0;
+}
+
+.social {
+  width: 100%;
+  height: 1fr;
+  display: grid;
+  grid-template-columns: 1fr repeat(2, 80px) 1fr;
+  grid-template-rows: 0px repeat(2, 80px) 1px;
+  justify-content: center;
+  align-content: center;
+  display: none;
+  transition: 0.1s display;
+}
+
+.collaborator-card:hover .social {
+  display: grid;
+}
+
+.social-network {
+  display: block;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-network span {
+  display: none;
+}
+
+.sn1,
+.sn2,
+.sn3,
+.sn4 {
+  width: 65%;
+  height: 65%;
+  background-size: cover;
+  background-position: center;
+  transition: 0.1s width, 0.1s height, 0.1s scale;
+}
+
+.sna1 {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.sn1 {
+  background-image: url(../img/social/github.png);
+}
+
+.sna2 {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+.sn2 {
+  background-image: url(../img/social/linkedin.png);
+}
+
+.sna3 {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.sn3 {
+  background-image: url(../img/social/gorjeo.png);
+}
+
+.sna4 {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+
+.sn4 {
+  background-image: url(../img/social/instagram.png);
+}
+
+.sna1:hover .sn1,
+.sna2:hover .sn2,
+.sna3:hover .sn3,
+.sna4:hover .sn4 {
+  width: 90%;
+  height: 90%;
+}
+
+.preventing-horizontal {
+  display: none;
+}
+
+/* Preventing horizontal */
+@media only screen and (max-height: 415px) {
+  .preventing-horizontal {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #003165;
+    padding: 60px 100px;
+  }
+
+  #poyo-white {
+    display: block;
+    width: 350px;
+    margin: 30px 0;
+  }
+
+  .preventing-horizontal p {
+    color: #fffef6;
+    font-size: 1.2em;
+    margin: 20px 0;
+  }
+
+  #rotate {
+    animation: rotation 12s infinite linear;
+    width: 64px;
+    height: 64px;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(135deg);
+    }
+
+    16.6% {
+      transform: rotate(45deg);
+    }
+
+    25% {
+      transform: rotate(45deg);
+    }
+
+    41.6% {
+      transform: rotate(-45deg);
+    }
+
+    50% {
+      transform: rotate(-45deg);
+    }
+
+    66.6% {
+      transform: rotate(-135deg);
+    }
+
+    75% {
+      transform: rotate(-135deg);
+    }
+
+    91.6% {
+      transform: rotate(-225deg);
+    }
+
+    100% {
+      transform: rotate(-225deg);
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+
+  .col-description {
+    font-size: 14px;
+  }
+
+  .col-name {
+    font-size: 24px;
+
+  }
+
+  .col-roll {
+    font-size: 18px;
+  }
+
+}
+
+@media only screen and (min-width: 500px) {
+
+  .cards {
+    max-width: 85vw;
+  }
+
+  .collaborator-card {
+    width: 85vw;
+  }
+
+}
+
+@media only screen and (min-width: 600px) {
+
+  .collaborator-card:hover .collaborator-glass {
+    height: 92%;
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+  .social {
+    margin: 0 auto;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(2, 170px);
+    grid-template-rows: repeat(2, 100px);
+    justify-content: center;
+    display: none;
+  }
+
+  .sna1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .sna2 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+
+  .sna3 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .sna4 {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .social-network {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .social-network div {
+    width: 60px;
+    height: 60px;
+  }
+
+  .collaborator-card:hover .social {
+    display: grid;
+  }
+
+  .social-network span {
+    display: block;
+    padding-bottom: 3px;
+    margin-bottom: 2px solid #fff;
+    margin: 0 10px;
+  }
+
+  .sna1:hover .sn1,
+  .sna2:hover .sn2,
+  .sna3:hover .sn3,
+  .sna4:hover .sn4 {
+    width: 80px;
+    height: 80px;
+  }
+
+  .collaborator-card:hover .collaborator-glass {
+    height: fit-content;
+    top: 30%;
+  }
+
+}
+
+@media only screen and (min-height: 1024px) {
+  .collaborator-card:hover .social {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .collaborator-card:hover .collaborator-glass {
+    height: fit-content;
+    top: 45%;
+  }
+
+  .collaborator-glass {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      "col-name col-name col-name social"
+      "col-roll col-roll col-roll social"
+      "col-description col-description col-description social"
+    ;
+  }
+
+  .col-name {
+    grid-area: col-name;
+  }
+
+  .col-roll {
+    grid-area: col-roll;
+  }
+
+  .col-description {
+    grid-area: col-description;
+  }
+
+  .social {
+    grid-area: social;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+
+  body {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 52vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: #003165;
+    transition: 0.3s width;
+  }
+
+  #poyo-logo {
+    display: none;
+  }
+
+  #poyo-white {
+    display: block;
+    margin: 20px 0% 80px;
+  }
+
+  .links a {
+    color: #fffef6;
+    margin: 10px 0;
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 0%;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+  }
+
+  .collaborator-card {
+    width: 16vw;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    transition: 0.4s width;
+  }
+
+  /* hovers */
+  .hovered-card {
+    width: 38vw;
+  }
+
+  .hovered-main {
+    width: 52vw;
+  }
+
+  .no-hovered-main {
+    width: 30vw;
+  }
+
+  .collaborator-glass {
+    transition: 0.3s top, 0.3s bottom, 0.3s height, 0.3s background;
+  }
+
+  .collaborator-card:hover .collaborator-glass {
+    top: 20px;
+    height: 90vh;
+  }
+
+  .links a:hover,
+  .links a:active {
+    color: #FFAA00;
+    border-bottom: 2px solid #FFAA00;
+  }
+
+  .col-name {
+    font-size: 1.5rem;
+  }
+
+  .col-roll {
+    font-size: 1rem;
+  }
+
+  .col-description {
+    font-size: 0.85rem;
+  }
+
+  .collaborator-card:hover .col-name {
+    font-size: 2rem;
+    margin: 30px 0;
+  }
+
+  .collaborator-card:hover .col-roll {
+    font-size: 1.5rem;
+    margin: 30px 0;
+  }
+
+  .collaborator-card:hover .col-description {
+    font-size: 0.9rem;
+    margin: 50px 0;
+  }
+
+  .collaborator-card:hover .social {
+    font-size: 0.85rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    left: 0;
+    bottom: 9%;
+  }
+  
+  .collaborator-card:hover .social-network {
+    height: 120px;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .sn1, .sn2, .sn3, .sn4 {
+    width: 60px;
+    height: 60px;
+  }
+
+  .sna1:hover .sn1,
+  .sna2:hover .sn2,
+  .sna3:hover .sn3,
+  .sna4:hover .sn4 {
+    width: 80px;
+    height: 80px;
+  }
+}

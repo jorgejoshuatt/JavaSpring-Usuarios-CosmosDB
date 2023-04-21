@@ -27,6 +27,10 @@ header {
   display: none;
 }
 
+#poyo-white {
+  display: none;
+}
+
 .links {
   margin-top: 20px;
   display: flex;
