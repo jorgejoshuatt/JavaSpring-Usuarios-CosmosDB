@@ -17,12 +17,30 @@ save.addEventListener('click', (e) => {
     })
         .then(function (response) {
             console.log(response);
-            console.log(`User ${newUser.user} created successfully !!`)
-            location.reload=true
+            console.log(`User ${newUser.user} created successfully !!`);
+                // INICIO ALERTA
+                (async () => {
+                     await Swal.fire({
+                        icon: 'success',
+                        title: 'Usuario creado correctamente!',
+                        text: 'Gracias por registrarte en nuestra plataforma ❤',
+                        timer: 6000,
+                    })
+                    window.location.href = `/users`;
+                })();
+            // FINAL ALERTA
         })
         .catch(function (error) {
             console.log(error);
-        }).finally(function (){
-            save.disabled=false;
+            // INICIO ALERTA
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al crear el usuario',
+                text: 'Por favor verifique los campos e intente nuevamente 😢',
+                timer: 6000,
+            })
+            // FINAL ALERTA
+        }).finally(function () {
+        save.disabled = false;
     });
 });

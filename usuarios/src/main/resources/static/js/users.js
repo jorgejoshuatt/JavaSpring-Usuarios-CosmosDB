@@ -10,7 +10,7 @@ axios.get('/api/usuarios')
         const insertUsers = document.getElementById('insert-user');
         insertUsers.innerHTML = strList;
         const animacion = document.getElementById('loading');
-        animacion.style.display="none";
+        animacion.style.display = "none";
         //Recopilacion de botones delete y update en un arreglo
         const deleteBtns = document.querySelectorAll('.delete-btn');
         //Recorrer el arreglo de botones
@@ -22,10 +22,28 @@ axios.get('/api/usuarios')
                     .then((response) => {
                         console.log(response);
                         console.log(`User delete successfully !!`);
-                        row.remove();
+                        // INICIO ALERTA
+                        (async () => {
+                            await Swal.fire({
+                                icon: 'success',
+                                title: 'Usuario eliminado correctamente!',
+                                text: 'Gracias por probar la funcionalidad de borrar 🗑',
+                                timer: 6000,
+                            })
+                            row.remove();
+                        })();
+                        // FINAL ALERTA
                     })
                     .catch((error) => {
                         console.log(error);
+                        // INICIO ALERTA
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error al eliminar usuario',
+                            text: 'Por favor compruebe su conexion a internet 🌐',
+                            timer: 6000,
+                        })
+                        // FINAL ALERTA
                     });
             });
         });
@@ -33,21 +51,9 @@ axios.get('/api/usuarios')
         //Redireccionamiento para actualizar usuario
         const updateBtns = document.querySelectorAll('.edit-btn');
         updateBtns.forEach(function (btnUpdate) {
-        btnUpdate.addEventListener('click', function (event) {
-            const userId = this.dataset.userid;
-            window.location.href=`/users/edit/${userId}`;
-
-
-
-            /*
-                axios.get(`/api/usuarios/${userId}`)
-
-                    .then((response) => {
-                        console.log(response);
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });*/
+            btnUpdate.addEventListener('click', function (event) {
+                const userId = this.dataset.userid;
+                window.location.href = `/users/edit/${userId}`;
             });
         });
     })

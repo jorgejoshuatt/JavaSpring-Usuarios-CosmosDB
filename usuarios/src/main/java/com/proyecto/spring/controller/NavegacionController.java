@@ -18,4 +18,9 @@ public class NavegacionController {
     @GetMapping("/users/edit/{id}")
     public String users_edit() {
         return "users-edit";}
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
+    }
 }
