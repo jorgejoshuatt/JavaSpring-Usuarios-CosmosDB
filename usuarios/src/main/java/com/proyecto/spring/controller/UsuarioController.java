@@ -12,10 +12,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -103,7 +103,56 @@ public class  UsuarioController {
             return false;
         }
     }
+/*
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Usuario>> userNameExists2(@PathVariable String id) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("ContentType", "application/json");
+        List<Usuario> usuarioList = new ArrayList<>();
+        logger.info("Id is present in the GET request");
+        List<Optional<Usuario>> optionaUsuarioList = Collections.singletonList(usuarioDBRepository.findById(id));
+        if (!(optionaUsuarioList.get(0).isEmpty())) {
+            optionaUsuarioList.stream().forEach(u -> u.ifPresent(usuario -> usuarioList.add(usuario)));
+            return new ResponseEntity<List<Usuario>>(usuarioList, responseHeaders, HttpStatus.OK);
+        }
+        return new ResponseEntity<List<Usuario>>(usuarioList, responseHeaders, HttpStatus.NOT_FOUND);
+    }
 
+    @GetMapping
+    //Buscar si el nombre de usuario existe dentro de la BD
+    public boolean userNameExists(String nombre_usuario) {
+        List<Usuario> nombre_usuarioList = new ArrayList<>();
+        logger.info("Id is not present in the GET request");
+        nombre_usuarioList = usuarioDBRepository.searchNombreUsuario(nombre_usuario);  // -> [{ "nombre_usuario": null, "correo": juan@poyo.com, "contrasenia":null}]   -> []
+        if (nombre_usuarioList != null && nombre_usuarioList.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+*/
+    @GetMapping("/user/{user_name}")
+    public ResponseEntity<List<Usuario>> userNameExists2(@PathVariable String user_name) {
+        System.out.println(user_name);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("ContentType", "application/json");
+        List<Usuario> usuarioList = new ArrayList<>();
+        logger.info("Id is present in the GET request");
+        List<Usuario> optionaUsuarioList = usuarioDBRepository.searchNombreUsuario(user_name);
+
+        List<Optional<Usuario>> transformedList = optionaUsuarioList.stream()
+            .map(Optional::ofNullable)
+            .collect(Collectors.toList());
+
+        if (!(transformedList.get(0).isEmpty())) {
+            transformedList.stream().forEach(u -> u.ifPresent(usuario -> usuarioList.add(usuario)));
+            return new ResponseEntity<List<Usuario>>(usuarioList, responseHeaders, HttpStatus.OK);
+        }
+        return new ResponseEntity<List<Usuario>>(usuarioList, responseHeaders, HttpStatus.NOT_FOUND);
+    }
+
+
+    
     public void validacionesUpdate(@RequestBody Usuario u) {
         //Validaciones para evitar campos vacios
         if (u.getNombre_usuario().equals("") || u.getNombre_usuario() == null) {
