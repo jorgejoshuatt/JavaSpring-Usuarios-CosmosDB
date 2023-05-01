@@ -132,18 +132,15 @@ public class  UsuarioController {
     }
 */
     @GetMapping("/user/{user_name}")
-    public ResponseEntity<List<Usuario>> userNameExists2(@PathVariable String user_name) {
-        System.out.println(user_name);
+    public ResponseEntity<List<Usuario>> consultarNombreUsuario(@PathVariable String user_name) {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.add("ContentType", "application/json");
         List<Usuario> usuarioList = new ArrayList<>();
         logger.info("Id is present in the GET request");
         List<Usuario> optionaUsuarioList = usuarioDBRepository.searchNombreUsuario(user_name);
-
         List<Optional<Usuario>> transformedList = optionaUsuarioList.stream()
             .map(Optional::ofNullable)
             .collect(Collectors.toList());
-
         if (!(transformedList.get(0).isEmpty())) {
             transformedList.stream().forEach(u -> u.ifPresent(usuario -> usuarioList.add(usuario)));
             return new ResponseEntity<List<Usuario>>(usuarioList, responseHeaders, HttpStatus.OK);
@@ -151,6 +148,23 @@ public class  UsuarioController {
         return new ResponseEntity<List<Usuario>>(usuarioList, responseHeaders, HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/email/{email}")
+    public ResponseEntity<List<Usuario>> consultarCorreo(@PathVariable String email) {
+        System.out.println(email);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("ContentType", "application/json");
+        List<Usuario> usuarioList = new ArrayList<>();
+        logger.info("Id is present in the GET request");
+        List<Usuario> optionaUsuarioList = usuarioDBRepository.searchCorreo(email);
+        List<Optional<Usuario>> transformedList = optionaUsuarioList.stream()
+            .map(Optional::ofNullable)
+            .collect(Collectors.toList());
+        if (!(transformedList.get(0).isEmpty())) {
+            transformedList.stream().forEach(u -> u.ifPresent(usuario -> usuarioList.add(usuario)));
+            return new ResponseEntity<List<Usuario>>(usuarioList, responseHeaders, HttpStatus.OK);
+        }
+        return new ResponseEntity<List<Usuario>>(usuarioList, responseHeaders, HttpStatus.NOT_FOUND);
+    }
 
     
     public void validacionesUpdate(@RequestBody Usuario u) {
