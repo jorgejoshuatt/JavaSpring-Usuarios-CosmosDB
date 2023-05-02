@@ -26,9 +26,9 @@ Proyecto CRUD de Usuario utilizando la tecnologia Java en conjunto con el framew
 
 ## Autores ✒️
 
-* **Josh Trejo** - *Programación* - [Josh Trejo](https://github.com/jorgejoshuatt)
-* **Brandon Avendaño** - *Programación* - [Brandon Avendaño Villegas](https://github.com/LanIkari)
-* **Bruno Cruz** - *Programación* - [Bruno Cruz Granados](https://github.com/brus2099)
+* **Josh Trejo** - *Programación backend* - [Josh Trejo](https://github.com/jorgejoshuatt)
+* **Brandon Avendaño** - *Programación backend* - [Brandon Avendaño Villegas](https://github.com/LanIkari)
+* **Bruno Cruz** - *Programación frontend* - [Bruno Cruz Granados](https://github.com/brus2099)
 
 
 ## Prueba nuestro proyecto ⚙️
