@@ -32,4 +32,4 @@ Proyecto CRUD de Usuario utilizando la tecnologia Java en conjunto con el framew
 
 
 ## Prueba nuestro proyecto ⚙️
-[El Poyo](https://elpoyocrudapp.azurewebsites.net/index)
+[El Poyo](https://elpoyocrudapp.azurewebsites.net/)
