@@ -164,12 +164,16 @@
   height: 90%;
 }
 
+#poyo-white {
+  display: none;
+}
+
 .preventing-horizontal {
   display: none;
 }
 
 /* Preventing horizontal */
-@media only screen and (max-height: 415px) {
+@media only screen and (max-height: 428px) {
   .preventing-horizontal {
     display: block;
     position: fixed;
