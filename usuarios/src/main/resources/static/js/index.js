@@ -1,3 +1,9 @@
+import { formValidationState } from "./index-warnings";
+
+function printFormState() {
+    console.log(formValidationState);
+}
+
 let newUser = new Object();
 let username = document.getElementById('username');
 let email = document.getElementById('email');
@@ -44,3 +50,4 @@ save.addEventListener('click', (e) => {
         save.disabled = false;
     });
 });
+

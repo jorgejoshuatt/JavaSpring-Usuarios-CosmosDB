@@ -16,6 +16,25 @@ const pswdSttsSmChr = document.querySelector('.password-warnings :nth-child(5)')
 const passwordConfirmationLabel = document.querySelector('#password-conf');
 const passwordConfirmationStatus = document.querySelector('#warning-passconf');
 
+// exclusive use for password validations
+let passwordState = {
+  length: null,
+  uppercase: null,
+  number: null,
+  specialChar: null,
+  repeatedChar: null,
+  passwordConfirmed: null
+}
+
+// the entire global state for all inputs on the form
+// indicates if all fields passes its validations
+let formValidationState = {
+  username: null,
+  email: null,
+  password: null,
+  passwordConfirm: null
+}
+
 
 // style for labels: label grows when its input is "focusing"
 const inputs = document.querySelectorAll('input');
@@ -44,6 +63,7 @@ async function updatingUsernameExistanceStatus(username) {
 
   isInDatabase = username == requestUserName ? true : false;
   if (!isInDatabase) {
+    formValidationState.username = true;
     usernameStatus.innerText = "Nombre de usuario displonible ✔️";
     usernameStatus.classList.remove('warning-inactive');
     usernameStatus.classList.add('warning-active');
@@ -65,6 +85,7 @@ async function updatingEmailExistanceStatus(email) {
 
   const isInDatabase = email == requestEmail ? true : false;
   if (!isInDatabase) {
+    formValidationState.email = true;
     emailStatus.innerText = "Correo electrónico disponible ✔️";
     emailStatus.classList.remove('warning-inactive');
     emailStatus.classList.add('warning-active');
@@ -115,6 +136,7 @@ usernameLabel.addEventListener('keydown', e => {
 
 usernameLabel.addEventListener('keyup', e => {
   count = 0;
+  formValidationState.username = false;
 
   interval = setInterval(() => {
     count += 100;
@@ -157,6 +179,7 @@ emailLabel.addEventListener('keydown', e => {
 
 emailLabel.addEventListener('keyup', e => {
   count = 0;
+  formValidationState.username = false;
 
   interval = setInterval(() => {
     count += 100;
@@ -199,13 +222,14 @@ passwordLabel.addEventListener('blur', e => {
     passwordState.number &&
     passwordState.specialChar &&
     passwordState.repeatedChar) {
-    passwordLabel.classList.remove('warning-inactive');
-    passwordLabel.classList.add('warning-active');
+      passwordLabel.classList.remove('warning-inactive');
+      passwordLabel.classList.add('warning-active');
     setTimeout(() => {
       passwordLabel.classList.remove('warning-active');
       passwordLabel.classList.remove('warning-inactive');
     }, 2000);
   } else {
+    formValidationState.password = false;
     passwordLabel.classList.remove('warning-active');
     passwordLabel.classList.add('warning-inactive');
   }
@@ -215,17 +239,9 @@ passwordLabel.addEventListener('blur', e => {
   });
 });
 
-let passwordState = {
-  length: null,
-  uppercase: null,
-  number: null,
-  specialChar: null,
-  repeatedChar: null,
-  passwordConfirmed: null
-}
-
 passwordLabel.addEventListener('keyup', e => {
   const passwordValue = e.target.value;
+  formValidationState.password = true;
 
   if (passwordValue.length < 8 || passwordValue.length > 32) {
     passwordState.length = false;
@@ -267,7 +283,7 @@ passwordLabel.addEventListener('keyup', e => {
     pswdSttsSpChr.classList.add('warning-inactive');
   }
 
-  if (Boolean(passwordValue.match(/(\w|[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])\1{1,}/g))) {
+  if (!Boolean(passwordValue.match(/(\w|[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])\1{1,}/g))) {
     passwordState.repeatedChar = true;
     pswdSttsSmChr.classList.remove('warning-inactive');
     pswdSttsSmChr.classList.add('warning-active');
@@ -290,6 +306,7 @@ passwordConfirmationLabel.addEventListener('focus', e => {
 
 passwordConfirmationLabel.addEventListener('blur', e => {
   if (passwordState.passwordConfirmed) {
+    formValidationState.passwordConfirm = true;
     passwordConfirmationLabel.classList.remove('warning-inactive');
     passwordConfirmationLabel.classList.add('warning-active');
     setTimeout(() => {
@@ -300,11 +317,13 @@ passwordConfirmationLabel.addEventListener('blur', e => {
     passwordConfirmationLabel.classList.remove('warning-active');
     passwordConfirmationLabel.classList.add('warning-inactive');
   }
-
+  
   passwordConfirmationStatus.style.height = '0px';
 });
 
 passwordConfirmationLabel.addEventListener('keyup', e => {
+  formValidationState.passwordConfirm = false;
+
   if (!(e.target.value == '')) {
     if (e.target.value == passwordLabel.value) {
       passwordState.passwordConfirmed = true;
@@ -326,3 +345,5 @@ passwordConfirmationLabel.addEventListener('keyup', e => {
     passwordConfirmationStatus.classList.remove('warning-inactive');
   }
 });
+
+export { formValidationState };
