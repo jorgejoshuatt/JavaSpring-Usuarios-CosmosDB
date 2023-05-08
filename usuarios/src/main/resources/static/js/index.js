@@ -1,53 +1,91 @@
-import { formValidationState } from "./index-warnings";
+import { formValidationState } from './index-warnings.js';
 
-function printFormState() {
-    console.log(formValidationState);
+const printFormState = () => {
+  console.log(formValidationState);
 }
 
-let newUser = new Object();
-let username = document.getElementById('username');
-let email = document.getElementById('email');
-let password = document.getElementById('password');
-let save = document.getElementById('save');
+const usernameInput = document.getElementById('username');
+const emailInput = document.getElementById('email');
+const confirmedPasswordInput = document.getElementById('password-conf');
+let newUser = {};
+const save = document.getElementById('save');
 
-save.addEventListener('click', (e) => {
-    e.preventDefault();
-    newUser.user = username.value;
-    newUser.email = email.value;
-    newUser.password = password.value;
-    save.disabled = true;
-    axios.post('/api/usuarios', {
-        "nombre_usuario": username.value,
-        "correo": email.value,
-        "contrasenia": password.value
-    })
-        .then(function (response) {
-            console.log(response);
-            console.log(`User ${newUser.user} created successfully !!`);
-                // INICIO ALERTA
-                (async () => {
-                     await Swal.fire({
-                        icon: 'success',
-                        title: 'Usuario creado correctamente!',
-                        text: 'Gracias por registrarte en nuestra plataforma ❤',
-                        timer: 6000,
-                    })
-                    window.location.href = `/users`;
-                })();
-            // FINAL ALERTA
-        })
-        .catch(function (error) {
-            console.log(error);
-            // INICIO ALERTA
-            Swal.fire({
-                icon: 'error',
-                title: 'Error al crear el usuario',
-                text: 'Por favor verifique los campos e intente nuevamente 😢',
-                timer: 6000,
-            })
-            // FINAL ALERTA
-        }).finally(function () {
-        save.disabled = false;
+async function handleUserCreation() {
+  const response = await axios.post('/api/usuarios', {
+    "nombre_usuario": usernameInput.value,
+    "correo": emailInput.value,
+    "contrasenia": confirmedPasswordInput.value
+  })
+  .then( res => {
+    Swal.fire({
+      title: 'Usuario creado correctamente',
+      text: 'Gracias por registrarte en nuestra plataforma 🥰',
+      icon: 'success',
+      confirmButtonText: '❤'
+    }).then( result => {
+      if (result.isConfirmed) {
+        window.location.href = `/users`;
+      }
     });
-});
+  })
+  .catch( e => {
+    Swal.fire({
+      title: 'Ups!',
+      text: 'Algo salió mal. Intenta escribiendo nuevamente tus datos',
+      icon: 'info',
+      confirmButtonText: 'Ok'
+    });
+  });
 
+  console.log(response)
+}
+
+save.addEventListener('click', e => {
+  e.preventDefault();
+  if (formValidationState.username &&
+    formValidationState.email &&
+    formValidationState.password &&
+    formValidationState.passwordConfirm) {
+      handleUserCreation();
+    } else {
+    Swal.fire({
+      title: 'Datos incompletos',
+      text: 'Por favor verifique los campos e intente nuevamente 😢',
+      icon: 'error',
+      confirmButtonText: '👍'
+    });
+  }
+  /*
+  axios.post('/api/usuarios', {
+    "nombre_usuario": usernameInput.value,
+    "correo": emailInput.value,
+    "contrasenia": confirmedPasswordInput.value
+  })
+    .then(function (response) {
+      console.log(response);
+      console.log(`User ${newUser.user} created successfully !!`);
+      // INICIO ALERTA
+      (async () => {
+        await Swal.fire({
+          icon: 'success',
+          title: 'Usuario creado correctamente!',
+          text: 'Gracias por registrarte en nuestra plataforma ❤',
+          timer: 6000,
+        })
+        window.location.href = `/users`;
+      })();
+      // FINAL ALERTA
+    })
+    .catch(function (error) {
+      console.log(error);
+      // INICIO ALERTA
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al crear el usuario',
+        text: 'Por favor verifique los campos e intente nuevamente 😢',
+        timer: 6000,
+      })
+      // FINAL ALERTA
+    })
+    */
+});
