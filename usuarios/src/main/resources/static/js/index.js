@@ -1,4 +1,4 @@
-import { formValidationState } from './index-warnings.js';
+import { formValidationState } from './warnings.js';
 
 const printFormState = () => {
   console.log(formValidationState);
@@ -7,7 +7,6 @@ const printFormState = () => {
 const usernameInput = document.getElementById('username');
 const emailInput = document.getElementById('email');
 const confirmedPasswordInput = document.getElementById('password-conf');
-let newUser = {};
 const save = document.getElementById('save');
 
 async function handleUserCreation() {
@@ -16,7 +15,17 @@ async function handleUserCreation() {
     "correo": emailInput.value,
     "contrasenia": confirmedPasswordInput.value
   })
-  .then( res => {
+  .then( res => res.status)
+  .catch( e => {
+    Swal.fire({
+      title: 'Ups!',
+      text: 'Algo salió mal. Intenta escribiendo nuevamente tus datos',
+      icon: 'info',
+      confirmButtonText: 'Ok'
+    });
+  });
+
+  if (response == 201) {
     Swal.fire({
       title: 'Usuario creado correctamente',
       text: 'Gracias por registrarte en nuestra plataforma 🥰',
@@ -27,17 +36,7 @@ async function handleUserCreation() {
         window.location.href = `/users`;
       }
     });
-  })
-  .catch( e => {
-    Swal.fire({
-      title: 'Ups!',
-      text: 'Algo salió mal. Intenta escribiendo nuevamente tus datos',
-      icon: 'info',
-      confirmButtonText: 'Ok'
-    });
-  });
-
-  console.log(response)
+  }
 }
 
 save.addEventListener('click', e => {

@@ -1,0 +1,36 @@
+
+header {
+  margin: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#just-logo {
+  width: 70px;
+}
+
+#poyo-logo {
+  display: none;
+}
+
+.links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.links a {
+  color: #003165;
+  text-decoration: none;
+  margin: 0 25px;
+  border: none;
+  height: 26px;
+  transition: 0.1s color, 0.1s border;
+}
+
+.links a:hover,
+.links a:active {
+  color: #FFAA00;
+  border-bottom: 2px solid #003165;
+}
