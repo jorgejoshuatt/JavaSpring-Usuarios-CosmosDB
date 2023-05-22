@@ -69,4 +69,146 @@
 }
 
 /* starting the design from page from scratch */
+/* since 'allcontent' */
 
+.all-content {
+  border: 1px solid #000;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 5px;
+}
+
+.content-info {
+  border: 1px solid red;
+  font-weight: 600;
+  font-size: 20px;
+  color: #003165;
+  text-align: center;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.content-info img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.content-table {
+  border: 1px solid blue;
+}
+
+.heading {
+  font-weight: 600;
+  font-size: 20px;
+  color: #003165;
+  margin: 15px 0;
+}
+
+.table {
+  border: 1px solid green;
+  width: 100%;
+  font-size: 14px;
+}
+
+.table thead {
+  display: none;
+}
+
+#insert-user tr {
+  margin: 00px 0px 10px;
+  border: 1px solid blue;
+  background-color: #FFF2D8;
+  padding: 5px 3px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 60px 1fr 27px;
+  overflow: hidden;
+  grid-template-rows: repeat(2, fit-content);
+}
+
+#insert-user td {
+  border: 1px solid red;
+  margin: 1px 2px;
+}
+
+td[data-label="Usuario"] {
+  grid-column: 2 /3;
+  grid-row: 1 /2;
+  height: fit-content;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: end;
+}
+
+td[data-label="Email"] {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: end;
+}
+
+.row-btns {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.newLabelUser {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  height: fit-content;
+}
+
+.newLabelEmail {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.row-btns {
+  height: 46px;
+}
+
+.button {
+  font-size: 12px;
+  height: 21px;
+  text-align: center;
+  background: none;
+  border: 1px solid #FFAA00;
+  border-radius: 3px;
+}
+
+/* hover effects */
+#insert-user tr,
+.button {
+  transition: 0.1s background-color;
+}
+
+.newLabelUser,
+.newLabelEmail,
+td[data-label="Usuario"],
+td[data-label="Email"] {
+  transition: 0.1s color;
+}
+
+#insert-user tr:hover {
+  background-color: #003165;
+}
+
+#insert-user tr:hover .newLabelUser,
+#insert-user tr:hover .newLabelEmail {
+  color: #fff;
+}
+
+#insert-user tr:hover td[data-label="Usuario"],
+#insert-user tr:hover td[data-label="Email"] {
+  color: #FFAA00;
+}
+
+.button:hover {
+  background-color: #FFAA00;
+}

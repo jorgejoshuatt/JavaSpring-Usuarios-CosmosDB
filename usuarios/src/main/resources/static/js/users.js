@@ -1,7 +1,18 @@
 "use strict"
 
+const tableRows = document.querySelectorAll(".table-row");
+tableRows.forEach(row => {
+  const userNameLabel = document.createElement("td");
+  userNameLabel.className = "newLabelUser";
+  userNameLabel.innerHTML = 'Usuario';
+  const userEmailLabel = document.createElement("td");
+  userEmailLabel.className = "newLabelEmail";
+  userEmailLabel.innerHTML = "Email";
+  row.prepend(userEmailLabel);
+  row.prepend(userNameLabel);
+});
 
-
+/*
 var strList = '';
 axios.get('/api/usuarios')
   .then(function (response) {
@@ -69,3 +80,4 @@ axios.get('/api/usuarios')
   .catch(function (error) {
     console.log(error);
   });
+  */
