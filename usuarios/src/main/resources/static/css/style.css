@@ -124,21 +124,6 @@
     flex-direction: row;
   }
 
-  #just-logo {
-    display: none;
-  }
-
-  #poyo-logo {
-    display: block;
-    height: 70px;
-  }
-
-  header {
-    width: 80vw;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
   .form {
     width: 40vw;
     order: 1;
@@ -163,10 +148,6 @@
 }
 
 @media only screen and (min-width: 1025px) {
-
-  header {
-    width: 1024px;
-  }
 
   .form {
     width: 480px;

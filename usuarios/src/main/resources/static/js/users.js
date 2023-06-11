@@ -26,6 +26,17 @@ axios.get('/api/usuarios')
                       <button data-userid="${user.id}" class="button delete-btn">🗑️</button>
                     </td>
                   </tr>`;
+
+                  Real format
+                  <tr class="table-row">
+                    <td class="table-label" data-label="Usuario">Prueba 1</td>
+                    <td data-label="Email">correotext.text.text.text.text@correo.com</td>
+                    <td class="row-btns">
+                      <button data-userid="${user.id}" class="button edit-btn">✏️</button>
+                      <button data-userid="${user.id}" class="button delete-btn">🗑️</button>
+                    </td>
+                  </tr>
+
     });
     const insertUsers = document.getElementById('insert-user');
     insertUsers.innerHTML = strList;
