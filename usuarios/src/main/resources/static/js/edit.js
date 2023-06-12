@@ -11,7 +11,7 @@ axios.get(`/api/usuarios/${variableUserId}`)
         username.value = usuario.nombre_usuario;
         email.value = usuario.correo;
         password.value = usuario.contrasenia;
-        let actualizar = document.getElementById('actualizar');
+        let actualizar = document.getElementById('save');
         actualizar.addEventListener('click', (e) => {
             e.preventDefault();
             axios.put(`/api/usuarios/${variableUserId}`, {
