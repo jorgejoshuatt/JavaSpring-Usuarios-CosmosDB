@@ -171,7 +171,7 @@ td[data-label="Email"] {
   text-align: center;
   background: none;
   border-radius: 3px;
-  border: 1px solid #FFAA00;
+  border: none;
 }
 
 /* hover effects */
@@ -190,6 +190,10 @@ td[data-label="Email"] {
 #insert-user tr:hover {
   background-color: #003165;
   grid-template-columns: 60px 1fr 27px;
+}
+
+#insert-user tr:hover .button {
+  border: 1px solid #FFAA00;
 }
 
 #insert-user tr:hover .newLabelUser,
@@ -322,6 +326,7 @@ td[data-label="Email"] {
     grid-column: 3 / 4;
     flex-direction: row;
     height: 22px;
+    overflow: initial;
   }
 
   .button {
