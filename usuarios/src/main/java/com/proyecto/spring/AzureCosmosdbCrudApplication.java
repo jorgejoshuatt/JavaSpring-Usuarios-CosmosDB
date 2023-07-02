@@ -12,3 +12,4 @@ public class AzureCosmosdbCrudApplication {
 		SpringApplication.run(AzureCosmosdbCrudApplication.class, args);
 	}
 }
+// testing connection
